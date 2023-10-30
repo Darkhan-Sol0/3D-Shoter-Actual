@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://dvqjl4y2qtmpl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_thpep"]
+size = Vector3(100, 0, 100)
+
+[sub_resource type="BoxMesh" id="BoxMesh_g1v3x"]
+size = Vector3(100, 0, 100)
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_ql03a"]
+
+[sub_resource type="Sky" id="Sky_dvhpt"]
+sky_material = SubResource("PhysicalSkyMaterial_ql03a")
+
+[sub_resource type="Environment" id="Environment_57e83"]
+background_mode = 2
+sky = SubResource("Sky_dvhpt")
+
+[sub_resource type="BoxMesh" id="BoxMesh_1msgj"]
+size = Vector3(1, 100, 1)
+
+[node name="Level 0" type="Node3D"]
+
+[node name="Ground" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("BoxShape3D_thpep")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("BoxMesh_g1v3x")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_57e83")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.627338, -0.778747, 0, 0.778747, 0.627338, 0, 0, 0)
+shadow_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.663, 0, 12.8844)
+mesh = SubResource("BoxMesh_1msgj")

@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://ddmo6cnnhcyd5"]
+
+[node name="CameraPlayer" type="Camera3D"]
+fov = 90.0
+near = 0.001
