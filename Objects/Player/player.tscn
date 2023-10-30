@@ -26,6 +26,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
 [node name="CameraPlayer" parent="Head" instance=ExtResource("2_b6n68")]
 
 [node name="Weapone" type="Node3D" parent="Head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, -0.3, -0.4)
 script = ExtResource("3_hw04g")
 weapone = ExtResource("4_wx3ek")

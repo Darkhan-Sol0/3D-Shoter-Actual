@@ -32,7 +32,7 @@ mesh = SubResource("BoxMesh_g1v3x")
 environment = SubResource("Environment_57e83")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.627338, -0.778747, 0, 0.778747, 0.627338, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.804635, 0.59377, 0, -0.59377, 0.804635, 0, 0, 0)
 shadow_enabled = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

@@ -4,6 +4,7 @@ extends CharacterBody3D
 @onready var Head := $Head
 @onready var coll := $CollisionShape3D
 @onready var mesh := $MeshInstance3D
+@onready var weapone := $Head/Weapone
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 #---Movement Setting---
@@ -43,9 +44,10 @@ func _input(event):
 		change_type_move(TYPE_MOVE.WALK)
 	input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 	
-	
-	if Input.is_action_just_pressed("LBM"):
-		$Head/Weapone.shot()
+	if event is InputEventMouseButton and event.is_action_pressed("LBM"):
+		weapone.shooted = true
+	if event is InputEventMouseButton and event.is_action_released("LBM"):
+		weapone.shooted = false
 
 func get_gravity(delta):
 	if is_on_floor():
