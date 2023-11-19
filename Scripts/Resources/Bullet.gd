@@ -1,11 +1,16 @@
 extends Resource
 class_name Bullet_Resource
 
-@export var bullet_name : String
-@export_enum( "NONE", "FIRE", "ICE", "BLOOD" ) var bullet_debuff_type : String
+@export var name : String
+@export_multiline var discriptions : String
+
+@export_group("Battle Setting")
 @export var bullet_damage : int
-@export var bullet_debuff_damage : int
-@export var bullet_debuff_time : float
-@export var bullet_speed : float
-@export var bullet_life_time : float
+@export var bullet_drob : int = 1
+@export var bullet_speed : float = 50
+@export var bullet_life_time : float = 2
 @export var bullet_mesh : Mesh
+
+@export_group("Loot Setting")
+@export var stackable : bool = true
+@export var loot_mesh : Mesh

@@ -1,23 +1,62 @@
-[gd_scene load_steps=2 format=3 uid="uid://ddmo6cnnhcyd5"]
+[gd_scene load_steps=4 format=3 uid="uid://ddmo6cnnhcyd5"]
 
-[ext_resource type="Texture2D" uid="uid://d4eo21x6dgvkc" path="res://icon.svg" id="1_wf24s"]
+[ext_resource type="Script" path="res://Scripts/Player/HUD.gd" id="1_7ob7n"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wvuqe"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_2uhga"]
+font_size = 64
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
 
 [node name="CameraPlayer" type="Camera3D"]
 fov = 90.0
 near = 0.001
+script = ExtResource("1_7ob7n")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Cell" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+text = "+"
+label_settings = SubResource("LabelSettings_wvuqe")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Icon" type="Sprite2D" parent="CanvasLayer/Control"]
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("1_wf24s")
+[node name="Ammo" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -325.0
+offset_top = -104.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "NONE"
+label_settings = SubResource("LabelSettings_2uhga")
+horizontal_alignment = 1
+vertical_alignment = 1

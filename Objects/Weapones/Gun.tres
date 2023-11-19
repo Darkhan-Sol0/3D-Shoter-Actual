@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="Weapone_Resource" load_steps=7 format=3 uid="uid://ybxkxuyv2xil"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/Weapones.gd" id="1_id5wq"]
+[ext_resource type="Resource" uid="uid://c6wqlbmgrbsu4" path="res://Objects/Weapones/Heavy Bullet.tres" id="1_vugoa"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xjkph"]
+albedo_color = Color(0, 0.619608, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_buhux"]
+material = SubResource("StandardMaterial3D_xjkph")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ykof0"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xxo5p"]
+material = SubResource("StandardMaterial3D_ykof0")
+size = Vector3(0.1, 0.1, 0.3)
+
+[resource]
+script = ExtResource("1_id5wq")
+name = "Gun"
+discriptions = ""
+weapone_shot_type = "AUTO"
+weapone_max_ammo = 20
+bullet_type = ExtResource("1_vugoa")
+weapone_damage = 10
+weapone_shot_cooldown = 0.1
+weapone_reload_time = 1.0
+weapone_razbros = 0.05
+weapone_mesh = SubResource("BoxMesh_xxo5p")
+stackable = false
+loot_mesh = SubResource("BoxMesh_buhux")

@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Bullet_Resource" load_steps=4 format=3 uid="uid://mtu11gtbqwft"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/Bullet.gd" id="1_wib2n"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rhdyy"]
+albedo_color = Color(1, 0, 0, 1)
+rim_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_wwc7y"]
+material = SubResource("StandardMaterial3D_rhdyy")
+size = Vector3(0.1, 0.1, 0.1)
+
+[resource]
+script = ExtResource("1_wib2n")
+name = "Light Bullet"
+discriptions = ""
+bullet_damage = 12
+bullet_drob = 3
+bullet_speed = 50.0
+bullet_life_time = 2.0
+bullet_mesh = SubResource("BoxMesh_wwc7y")
+stackable = true

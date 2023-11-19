@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="Bullet_Resource" load_steps=6 format=3 uid="uid://c6wqlbmgrbsu4"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/Bullet.gd" id="1_jogxp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5q6rm"]
+albedo_color = Color(1, 0.482353, 0, 1)
+rim_enabled = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_hbuyv"]
+material = SubResource("StandardMaterial3D_5q6rm")
+radius = 0.05
+height = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v7lcj"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0ohdw"]
+material = SubResource("StandardMaterial3D_v7lcj")
+size = Vector3(0.3, 0.2, 0.6)
+
+[resource]
+script = ExtResource("1_jogxp")
+name = "Heavy Bullet"
+discriptions = ""
+bullet_damage = 12
+bullet_drob = 1
+bullet_speed = 50.0
+bullet_life_time = 2.0
+bullet_mesh = SubResource("SphereMesh_hbuyv")
+stackable = true
+loot_mesh = SubResource("BoxMesh_0ohdw")

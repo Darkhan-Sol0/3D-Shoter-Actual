@@ -4,15 +4,16 @@ extends CharacterBody3D
 @onready var Head := $Head
 @onready var coll := $CollisionShape3D
 @onready var mesh := $MeshInstance3D
-@onready var weapone := $Head/Weapone
+@onready var weaponepos := $Head/WeaponePos
+@onready var weapone := $Weapone
+@onready var interactive := $Head/InteractiveRay
+@onready var inventory := $Inventory
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+@export var player_resource : Player_Resource
+
 #---Movement Setting---
-@export var walk_speed : float = 7.0
-@export var sprint_speed : float = 12.0
-@export var seat_speed : float = 4.0
 var real_speed : float
-@export var jump : float = 5.0
 
 var acceleration : float = 20
 var decceleration : float = 15
@@ -25,7 +26,7 @@ enum TYPE_POSE { STAY, SEAT }
 
 var sens : float = 0.0025
 var can_jump : bool = true
-var input_dir : Vector2
+var input_dir : Vector2 = Vector2()
 
 func _ready():
 	change_type_move(TYPE_MOVE.WALK)
@@ -39,15 +40,16 @@ func _input(event):
 	if event is InputEventKey and event.is_action_pressed("ctrl"):
 		change_type_move(TYPE_MOVE.SEAT)
 	if event is InputEventKey and event.is_action_pressed("space") and can_jump:
-		velocity.y = jump
+		velocity.y = player_resource.player_jump
 	if event is InputEventKey and event.is_action_released("ctrl") or event.is_action_released("shift"):
 		change_type_move(TYPE_MOVE.WALK)
+	if event is InputEventKey and event.is_action_pressed("interactive"):
+		if interactive.is_colliding() and interactive.get_collider().has_method("get_interactive"):
+			interactive.get_collider().get_interactive()
+			if interactive.get_collider().has_method("this_loot"):
+				inventory.add_items_inventory(interactive.get_collider().loot_resource, interactive.get_collider().loot_count)
+
 	input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
-	
-	if event is InputEventMouseButton and event.is_action_pressed("LBM"):
-		weapone.shooted = true
-	if event is InputEventMouseButton and event.is_action_released("LBM"):
-		weapone.shooted = false
 
 func get_gravity(delta):
 	if is_on_floor():
@@ -82,13 +84,13 @@ func get_type_movement():
 	match type_move:
 		TYPE_MOVE.WALK:
 			change_type_pose(TYPE_POSE.STAY)
-			real_speed = walk_speed
+			real_speed = player_resource.player_walk_speed
 		TYPE_MOVE.SEAT:
 			change_type_pose(TYPE_POSE.SEAT)
-			real_speed = seat_speed
+			real_speed = player_resource.player_seat_speed
 		TYPE_MOVE.SPRINT:
 			change_type_pose(TYPE_POSE.STAY)
-			real_speed = sprint_speed
+			real_speed = player_resource.player_sprint_speed
 
 func change_type_move(new_type_move):
 	type_move = new_type_move

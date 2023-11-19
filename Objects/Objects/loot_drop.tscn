@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://cw5bgt5g6wymi"]
+
+[sub_resource type="GDScript" id="GDScript_cn6hl"]
+script/source = "extends RigidBody3D
+
+@export var loot_resource : Resource
+@export var loot_count : int = 1
+
+@onready var mesh := $MeshInstance3D
+@onready var coll := $CollisionShape3D
+
+func _ready():
+	mesh.mesh = loot_resource.loot_mesh
+	coll.shape.size = mesh.mesh.size
+
+func get_interactive() -> void:
+	queue_free()
+
+func this_loot() -> void:
+	pass
+"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4y0gd"]
+
+[node name="Loot_Drop" type="RigidBody3D"]
+script = SubResource("GDScript_cn6hl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_4y0gd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]

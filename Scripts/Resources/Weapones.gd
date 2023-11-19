@@ -1,14 +1,21 @@
 extends Resource
 class_name Weapone_Resource
 
-@export var weapone_name : String ##Name weapone
-@export_multiline var weapone_discriptions : String ##Weapone discriptions
-@export_enum( "AUTO", "SINGLE" ) var weapone_shot_type : String ##Weapone shot type
-@export var weapone_ammo_count : int ##weapone ammo count
+@export var name : String ##Name weapone
+@export_multiline var discriptions : String ##Weapone discriptions
+
+@export_group("Battle Setting")
+@export_enum( "SINGLE", "AUTO") var weapone_shot_type : String = "SINGLE" ##Weapone shot type
+@export var weapone_max_ammo : int ##weapone ammo count
 @export var bullet_type : Bullet_Resource ## Bullet
-@export var weapone_damage: int ## NEED?
-@export var weapone_drop_bullet: int
-@export var weapone_shot_cooldown : float ##weapone shot cooldown
-@export var weapone_reload_time : float ##weapone reload time
-@export var weapone_razbros : float
+@export var weapone_damage: int = 0 ## NEED?
+@export var weapone_shot_cooldown : float = 1 ##weapone shot cooldown
+@export var weapone_reload_time : float = 1 ##weapone reload time
+@export var weapone_razbros : float = 0.05
 @export var weapone_mesh : Mesh ##weapone mesh
+
+@export_group("Loot Setting")
+@export var stackable : bool = false
+@export var loot_mesh : Mesh
+
+

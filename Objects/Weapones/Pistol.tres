@@ -1,27 +1,7 @@
-[gd_resource type="Resource" script_class="Weapone_Resource" load_steps=8 format=3 uid="uid://3mmsbbeqkp87"]
+[gd_resource type="Resource" script_class="Weapone_Resource" load_steps=5 format=3 uid="uid://3mmsbbeqkp87"]
 
 [ext_resource type="Script" path="res://Scripts/Resources/Weapones.gd" id="1_4d7r6"]
-[ext_resource type="Script" path="res://Scripts/Resources/Bullet.gd" id="1_eyjah"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m0rfi"]
-albedo_color = Color(1, 0, 0, 1)
-rim_enabled = true
-
-[sub_resource type="SphereMesh" id="SphereMesh_tst53"]
-material = SubResource("StandardMaterial3D_m0rfi")
-radius = 0.05
-height = 0.1
-
-[sub_resource type="Resource" id="Resource_trp0v"]
-script = ExtResource("1_eyjah")
-bullet_name = "Pistol"
-bullet_debuff_type = "NONE"
-bullet_damage = 10
-bullet_debuff_damage = 0
-bullet_debuff_time = 0.0
-bullet_speed = 100.0
-bullet_life_time = 2.0
-bullet_mesh = SubResource("SphereMesh_tst53")
+[ext_resource type="Resource" uid="uid://mtu11gtbqwft" path="res://Objects/Weapones/Light Bullet.tres" id="1_48syf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7pw4r"]
 albedo_color = Color(0.27451, 0.27451, 0.27451, 1)
@@ -33,14 +13,14 @@ size = Vector3(0.1, 0.1, 0.5)
 
 [resource]
 script = ExtResource("1_4d7r6")
-weapone_name = "Pistol"
-weapone_discriptions = "Just Pistol"
+name = "Pistol"
+discriptions = ""
 weapone_shot_type = "SINGLE"
-weapone_ammo_count = 12
-bullet_type = SubResource("Resource_trp0v")
-weapone_damage = 10
-weapone_drop_bullet = 5
-weapone_shot_cooldown = 0.5
-weapone_reload_time = 1.0
-weapone_razbros = 0.05
+weapone_max_ammo = 2
+bullet_type = ExtResource("1_48syf")
+weapone_damage = 0
+weapone_shot_cooldown = 0.4
+weapone_reload_time = 2.0
+weapone_razbros = 0.1
 weapone_mesh = SubResource("BoxMesh_s3jhf")
+stackable = false
