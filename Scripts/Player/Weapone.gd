@@ -5,7 +5,7 @@ extends Node3D
 @onready var bulletstart := $"../Head/WeaponePos"
 @onready var inventory := $"../Inventory"
 
-var ammo : int = 30
+var ammo : int
 var can_shot : bool = true
 
 var shooting : bool = false
@@ -36,17 +36,15 @@ func shot():
 		reload()
 
 func reload():
-	for i in inventory.inventory.size():
-		if inventory.inventory[i].point.name == weapone_resource.bullet_type.name and ammo < weapone_resource.weapone_max_ammo and not reloading:
-			reloading = true
-			await get_tree().create_timer(weapone_resource.weapone_reload_time).timeout
-			var mag = weapone_resource.weapone_max_ammo - ammo
-			inventory.inventory[i].count -= mag
-			if inventory.inventory[i].count < 0:
-				mag += inventory.inventory[i].count
-			ammo += mag
-			reloading = false
-			break
+	if inventory.inventory.has(weapone_resource.bullet_type) and inventory.inventory[weapone_resource.bullet_type] > 0 and ammo < weapone_resource.weapone_max_ammo and not reloading:
+		reloading = true
+		await get_tree().create_timer(weapone_resource.weapone_reload_time).timeout
+		var mag = weapone_resource.weapone_max_ammo - ammo
+		inventory.inventory[weapone_resource.bullet_type] -= mag
+		if inventory.inventory[weapone_resource.bullet_type] < 0:
+			mag += inventory.inventory[weapone_resource.bullet_type]
+		ammo += mag
+		reloading = false
 
 func get_bullet():
 	var bullet = Bulldet_Script.new()

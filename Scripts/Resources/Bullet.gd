@@ -14,3 +14,4 @@ class_name Bullet_Resource
 @export_group("Loot Setting")
 @export var stackable : bool = true
 @export var loot_mesh : Mesh
+@export var loot_type : String = "Bullet"

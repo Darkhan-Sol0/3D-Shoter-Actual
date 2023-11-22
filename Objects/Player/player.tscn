@@ -1,13 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://bdyq7t7cvngtb"]
+[gd_scene load_steps=12 format=3 uid="uid://bdyq7t7cvngtb"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_gchpe"]
 [ext_resource type="Script" path="res://Scripts/Resources/Player.gd" id="2_1cjn6"]
 [ext_resource type="PackedScene" uid="uid://ddmo6cnnhcyd5" path="res://Objects/Player/camera_player.tscn" id="2_b6n68"]
 [ext_resource type="Resource" uid="uid://c6wqlbmgrbsu4" path="res://Objects/Weapones/Heavy Bullet.tres" id="2_qkknb"]
 [ext_resource type="Script" path="res://Scripts/Player/Weapone.gd" id="3_hw04g"]
-[ext_resource type="Script" path="res://Scripts/Resources/inventory_point.gd" id="6_t50ki"]
 [ext_resource type="Resource" uid="uid://mtu11gtbqwft" path="res://Objects/Weapones/Light Bullet.tres" id="8_u63us"]
-[ext_resource type="Resource" uid="uid://3mmsbbeqkp87" path="res://Objects/Weapones/Pistol.tres" id="9_oef5x"]
+[ext_resource type="Resource" uid="uid://ybxkxuyv2xil" path="res://Objects/Weapones/Gun.tres" id="9_ssun5"]
 [ext_resource type="Script" path="res://Scripts/Player/Inventory.gd" id="9_udl8c"]
 
 [sub_resource type="Resource" id="Resource_rergx"]
@@ -21,16 +20,6 @@ player_jump = 5.0
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n1jco"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_n5y7y"]
-
-[sub_resource type="Resource" id="Resource_qvmi6"]
-script = ExtResource("6_t50ki")
-point = ExtResource("8_u63us")
-count = 2
-
-[sub_resource type="Resource" id="Resource_iapih"]
-script = ExtResource("6_t50ki")
-point = ExtResource("2_qkknb")
-count = 25
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_gchpe")
@@ -57,8 +46,12 @@ target_position = Vector3(0, 0, -2)
 
 [node name="Inventory" type="Node" parent="."]
 script = ExtResource("9_udl8c")
-inventory = Array[ExtResource("6_t50ki")]([SubResource("Resource_qvmi6"), SubResource("Resource_iapih")])
+inventory = {
+ExtResource("8_u63us"): 3,
+ExtResource("2_qkknb"): 14
+}
+add = ExtResource("2_qkknb")
 
 [node name="Weapone" type="Node3D" parent="."]
 script = ExtResource("3_hw04g")
-weapone_resource = ExtResource("9_oef5x")
+weapone_resource = ExtResource("9_ssun5")

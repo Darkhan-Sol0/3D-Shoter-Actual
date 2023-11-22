@@ -17,5 +17,5 @@ class_name Weapone_Resource
 @export_group("Loot Setting")
 @export var stackable : bool = false
 @export var loot_mesh : Mesh
-
+@export var loot_type : String = "Weapone"
 

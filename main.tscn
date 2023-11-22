@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://kd3h6j17vppy"]
+[gd_scene load_steps=6 format=3 uid="uid://kd3h6j17vppy"]
 
 [ext_resource type="PackedScene" uid="uid://dvqjl4y2qtmpl" path="res://Levels/level_0.tscn" id="1_0a4ae"]
 [ext_resource type="PackedScene" uid="uid://bdyq7t7cvngtb" path="res://Objects/Player/player.tscn" id="2_7b15f"]
 [ext_resource type="PackedScene" uid="uid://cw5bgt5g6wymi" path="res://Objects/Objects/loot_drop.tscn" id="3_gmeio"]
 [ext_resource type="Resource" uid="uid://c6wqlbmgrbsu4" path="res://Objects/Weapones/Heavy Bullet.tres" id="4_7pvec"]
+[ext_resource type="Resource" uid="uid://ybxkxuyv2xil" path="res://Objects/Weapones/Gun.tres" id="5_873pa"]
 
 [node name="Main" type="Node"]
 
@@ -16,3 +17,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11233, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.23122, 1.11442, -11.4252)
 loot_resource = ExtResource("4_7pvec")
 loot_count = 100
+
+[node name="Loot_Drop2" parent="." instance=ExtResource("3_gmeio")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.23122, 1.11442, -11.4252)
+loot_resource = ExtResource("5_873pa")

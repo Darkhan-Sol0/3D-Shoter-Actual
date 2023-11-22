@@ -2,33 +2,27 @@ extends Node
 
 @onready var player := $"../"
 
-@export var inventory : Array[inventory_point]
+@export var inventory : Dictionary
+
+@export var add : Resource 
 
 func _ready():
 	pass
 
 func _input(event):
-	if event is InputEventMouseButton and event.is_action_pressed("RBM"):
-		for i in inventory.size():
-			print(inventory[i].point.name)
+	pass
 
 func add_items_inventory(item, count):
-	if item.stackable:
-		for i in inventory.size():
-			if item.name == inventory[i].point.name:
-				inventory[i].count += count
-				return
-	var c = inventory_point.new()
-	c.point = item
-	c.count = count
-	inventory.append(c)
+	if item.stackable and item in inventory.keys():
+		inventory[item] += count
+	else:
+		inventory.merge({item : count})
+
 
 func delet_items_inventory():
-	for i in inventory.size():
-		if inventory[i].count <= 0:
-			inventory.remove_at(i)
-			break
+	inventory.erase(inventory.find_key(inventory.values().filter(func(num) : return num <= 0).front()))
 
 func _process(_delta):
-	delet_items_inventory()
+	if inventory.values().filter(func(num) : return num <= 0):
+		delet_items_inventory()
 	pass
