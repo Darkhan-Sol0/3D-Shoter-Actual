@@ -30,3 +30,4 @@ weapone_razbros = 0.05
 weapone_mesh = SubResource("BoxMesh_xxo5p")
 stackable = false
 loot_mesh = SubResource("BoxMesh_buhux")
+loot_type = "Weapone"

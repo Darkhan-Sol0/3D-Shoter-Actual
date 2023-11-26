@@ -20,3 +20,4 @@ bullet_speed = 50.0
 bullet_life_time = 2.0
 bullet_mesh = SubResource("BoxMesh_wwc7y")
 stackable = true
+loot_type = "Bullet"

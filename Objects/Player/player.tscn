@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bdyq7t7cvngtb"]
+[gd_scene load_steps=13 format=3 uid="uid://bdyq7t7cvngtb"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_gchpe"]
 [ext_resource type="Script" path="res://Scripts/Resources/Player.gd" id="2_1cjn6"]
@@ -8,6 +8,7 @@
 [ext_resource type="Resource" uid="uid://mtu11gtbqwft" path="res://Objects/Weapones/Light Bullet.tres" id="8_u63us"]
 [ext_resource type="Resource" uid="uid://ybxkxuyv2xil" path="res://Objects/Weapones/Gun.tres" id="9_ssun5"]
 [ext_resource type="Script" path="res://Scripts/Player/Inventory.gd" id="9_udl8c"]
+[ext_resource type="Script" path="res://Objects/Player/Health.gd" id="9_vomtc"]
 
 [sub_resource type="Resource" id="Resource_rergx"]
 script = ExtResource("2_1cjn6")
@@ -48,10 +49,14 @@ target_position = Vector3(0, 0, -2)
 script = ExtResource("9_udl8c")
 inventory = {
 ExtResource("8_u63us"): 3,
-ExtResource("2_qkknb"): 14
+ExtResource("2_qkknb"): 14,
+ExtResource("9_ssun5"): 1
 }
 add = ExtResource("2_qkknb")
 
 [node name="Weapone" type="Node3D" parent="."]
 script = ExtResource("3_hw04g")
 weapone_resource = ExtResource("9_ssun5")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("9_vomtc")

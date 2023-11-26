@@ -29,3 +29,4 @@ bullet_life_time = 2.0
 bullet_mesh = SubResource("SphereMesh_hbuyv")
 stackable = true
 loot_mesh = SubResource("BoxMesh_0ohdw")
+loot_type = "Bullet"
